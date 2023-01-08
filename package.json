@@ -2,7 +2,7 @@
   "name": "chia-cat-tracker-nodejs",
   "version": "1.0.0",
   "type": "module",
-  "description": "Chia CAT Tracker - searches for unspent Childcoins of a specific smartcoin - requires Chia Dev Tools ",
+  "description": "Chia CAT Tracker - searches for unspent childcoins of a specific smartcoin - requires Chia Dev Tools ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
