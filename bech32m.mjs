@@ -2,7 +2,8 @@ function hextobyte(puzzlehash){
   let bytearray = [];
   for(let i = 0; i < puzzlehash.length; i+=2){
     const hexstring = puzzlehash.substring(i,i+2);
-    bytearray.push(parseInt(hexstring,16));
+    if(hexstring!='0x')
+      bytearray.push(parseInt(hexstring,16));
   }
   return bytearray;
 }
@@ -20,10 +21,10 @@ function convertTo5Bit(puzzlehash){
     }else{
       bit5array.push(parseInt(bytestring.substring(i,i+5),2));
     }
-    console.log(i+': '+bytestring.substring(i,i+5)+'->'+parseInt(bytestring.substring(i,i+5),2));
+    //console.log(i+': '+bytestring.substring(i,i+5)+'->'+parseInt(bytestring.substring(i,i+5),2));
   }
-  console.log(bytestring.length);
-  console.log(bytestring);
+  //console.log(bytestring.length);
+  //console.log(bytestring);
   return bit5array;
 }
 
@@ -55,15 +56,15 @@ function createChecksum(puzzlehash){
 
 function convertToXCHAddress(puzzlehash){
   const CHARSET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l';
-  console.log(puzzlehash);
+  //console.log(puzzlehash);
   puzzlehash = hextobyte(puzzlehash);
-  console.log(puzzlehash);
+  //console.log(puzzlehash);
   puzzlehash = convertTo5Bit(puzzlehash);
   const checksum = createChecksum(puzzlehash);
-  console.log(checksum);
+  //console.log(checksum);
   puzzlehash = puzzlehash.concat(checksum);
-  console.log('combined:');
-  console.log(puzzlehash);
+  //console.log('combined:');
+  //console.log(puzzlehash);
   let XCHAddress="xch1";
   for(let i = 0; i < puzzlehash.length; i++){
     XCHAddress += CHARSET.charAt(puzzlehash[i]);
